@@ -5,6 +5,20 @@
     flex-direction: column;
     min-height: 100vh;
     &__wrapper {
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        line-height: 2.1;
+        h1 {
+            font-size: var(--xlarge-font);
+            color: var(--secondary);
+        }
+        h2 {
+            font-size: var(--large-font);
+        }
+    }
+    &__link {
+        text-decoration: none;
     }
 }

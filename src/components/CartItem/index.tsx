@@ -6,6 +6,8 @@ import ProductItem from '../ProductItem'
 import User from '../User'
 import { CartItemProps } from '../../types'
 
+import './style.scss'
+
 export default function CartItem({
   id,
   userId,
@@ -18,8 +20,9 @@ export default function CartItem({
   const viewUserOnClick = () => {
     setViewUser(!viewUser)
   }
+  console.log(productData)
   return (
-    <div>
+    <div className="cart-item">
       <div>
         <p>username: {user && user.username}</p>
         <button onClick={viewUserOnClick}>View User</button>
@@ -50,7 +53,7 @@ export default function CartItem({
                   description,
                 } = product
                 if (productItem.productId === product.id) {
-                  //   console.log('these are matching', productItem, product)
+                  console.log('these are matching', productItem, product)
                   return (
                     <>
                       <ProductItem
@@ -68,11 +71,11 @@ export default function CartItem({
                 return null
               })}
             </>
-            <li>Qty: {productItem.quantity}</li>
-            <li>Total: </li>
+            {/* <li>Qty: {productItem.quantity}</li> */}
           </>
         ))}
       </ul>
+      <h3>Total Cart: </h3>
     </div>
   )
 }

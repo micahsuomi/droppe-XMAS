@@ -1,27 +1,27 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import useCarts from '../../hooks/useCarts'
-import useProducts from '../../hooks/useProducts'
-import useWishListCart from '../../hooks/useWishListCart'
+import Button from '../../components/Button'
+import { iconsLocale } from '../../utils/locale/icons'
 
 import './style.scss'
 
 export default function Home() {
-  const [cartData] = useCarts()
-  const [productData] = useProducts()
-  const [wishListData] = useWishListCart()
-
-  console.log(cartData )
-  console.log(productData)
-  console.log(wishListData)
-
   return (
     <div className="home">
       <div className="home__wrapper">
         <h1>Droppe XMAS</h1>
         <h2>An intuitive Cart Shopping Experience</h2>
-        <NavLink to ="/wishlist">Enter</NavLink>
+        <NavLink to="/wishlist" className="home__link">
+          <Button
+            size="lg"
+            text="View Cart"
+            color="primary"
+            withIcon
+            icon={iconsLocale.shoppingCart.iconClass}
+            withMargin
+          />
+        </NavLink>
       </div>
     </div>
   )
