@@ -3,12 +3,14 @@ import React from 'react'
 import useUsers from '../../hooks/useUsers'
 import CartItem from '../CartItem'
 
-export default function WishListCartTable(props: any) {
+import './style.scss'
+
+export default function CartList(props: any) {
   console.log(props.data)
   const [userData] = useUsers()
   return (
-    <div>
-      <h1>Wish List</h1>
+  
+    <div className="wish-list-wrapper">
       {props.data.map((cart: any) => {
         const { id, userId, date, products } = cart
         return (

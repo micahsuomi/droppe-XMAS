@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { UserProps } from '../../types'
+
 export default function User({
   firstName,
   lastName,

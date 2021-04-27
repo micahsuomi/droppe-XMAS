@@ -11,6 +11,18 @@ export type ImageProps = {
   title: string
 }
 
+type Size = 'sm' | 'md' | 'lg' 
+
+export type ButtonProps = {
+  size: Size
+  color: string
+  className?: string
+  withMargin?: boolean
+  withIcon?: boolean
+  icon?: string
+  text: string
+}
+
 export type ProductItemProps = {
   id: string
   image: string

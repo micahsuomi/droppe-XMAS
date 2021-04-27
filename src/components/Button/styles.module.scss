@@ -1,0 +1,42 @@
+.button {
+  padding: 1.2rem;
+  cursor: pointer;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  font-size: var(--regular);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i {
+      font-size: 1.4em;
+      margin-left: .4rem;
+  }
+}
+
+.button:hover {
+    transform: scale(1.03);
+    transition: .1s ease-in-out;
+}
+
+.big_button {
+  width: 18rem;
+}
+.medium_button {
+  width: 10rem;
+}
+.small_button {
+  width: 6rem;
+}
+
+.with_margin {
+  margin: 1rem;
+}
+
+.btn_primary {
+  background-color: var(--primary);
+}
+.btn_primary:hover {
+  background-color: var(--primary-light);
+}
