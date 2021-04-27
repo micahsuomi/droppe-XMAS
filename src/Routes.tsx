@@ -1,8 +1,8 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import Home from './pages/Home'
-import WishList from './pages/WishList'
+import Home from './pages/Home/index'
+import WishList from './pages/WishList/WishList'
 
 
 const Routes = () => (
