@@ -1,9 +1,11 @@
 // Action types
 export const GET_PRODUCTS = 'GET_PRODUCTS'
-export const GET_USERS = 'GET_USERS'
-export const GET_CARTS = 'GET_CARTS'
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
+export const GET_USERS = 'GET_USERS'
+export const GET_CARTS = 'GET_CARTS'
+export const REMOVE_CART_PRODUCT = 'REMOVE_CART_PRODUCT'
+
 
 // UI types
 export type ImageProps = {
@@ -21,16 +23,19 @@ export type ButtonProps = {
   withIcon?: boolean
   icon?: string
   text: string
+  onClickRes?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
 export type ProductItemProps = {
   id: string
+  product: Product
   image: string
   title: string
   price: any
   description: string
   category: string
   quantity: number
+  dismissOnClick: Function
 }
 
 export type UserProps = {
@@ -41,6 +46,7 @@ export type UserProps = {
 
 export type CartItemProps = {
   id: number
+  cart: Cart
   userId: number
   user?: any 
   date: string
@@ -49,7 +55,7 @@ export type CartItemProps = {
 
 // Product types
 export type Product = {
-  id: string
+  id: number
   title: string
   price: number
   description: string
@@ -60,6 +66,7 @@ export type Product = {
 export type ProductInCart = {
   productId: number
   quantity: number
+  product: Product
 }
 
 export type AddProductAction = {
@@ -138,6 +145,7 @@ export type Cart = {
   userId: number
   date: string
   products: ProductInCart[]
+  cartUser?: User
 }
 
 export type GetCartsAction = {
@@ -147,16 +155,26 @@ export type GetCartsAction = {
   }
 }
 
+export type RemoveCartProductAction = {
+  type: typeof REMOVE_CART_PRODUCT
+  payload: {
+    cart: Cart
+  }
+}
+
 export type CartActions = 
   | GetCartsAction
+  | RemoveCartProductAction
 
 export type ProductState = {
-  inCart: Product[]
   products: Product[]
 }
 
 export type CartState = {
-  carts: Cart[]
+  carts: any
+  cart: any
+  approvedCarts: Cart[]
+  disregardedCarts: Cart[]
 }
 
 export type AppState = {

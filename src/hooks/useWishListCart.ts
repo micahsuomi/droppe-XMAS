@@ -14,13 +14,6 @@ export default function useWishListCart() {
   const [data, setData] = useState(Array)
   const [product, setProduct] = useState({} as Product)
 
-
-  useEffect(() => {
-    dispatch(getAllCarts())
-    dispatch(getAllProducts())
-  }, [dispatch])
-
-
   useEffect(() => {
     if(err) {
       setErr('error loading data')

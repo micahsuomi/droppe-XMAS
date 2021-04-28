@@ -27,7 +27,8 @@
   width: 10rem;
 }
 .small_button {
-  width: 6rem;
+  width: 9rem;
+  padding: .3rem;
 }
 
 .with_margin {
@@ -40,3 +41,10 @@
 .btn_primary:hover {
   background-color: var(--primary-light);
 }
+
+.btn_secondary {
+    background-color: var(--secondary);
+  }
+  .btn_secondary:hover {
+    background-color: var(--secondary-light);
+  }
