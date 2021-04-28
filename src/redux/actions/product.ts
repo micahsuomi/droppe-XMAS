@@ -35,7 +35,6 @@ export function removeProduct(product: Product): ProductActions {
   }
 }
 
-// Async action processed by redux-thunk middleware
 export function getAllProducts() {
   return async (dispatch: Dispatch) => {
     const url = 'https://fakestoreapi.com/products'
@@ -45,13 +44,8 @@ export function getAllProducts() {
   }
 }
 
-// Async action processed by redux-thunk middleware
-export function fetchProduct(productId: string) {
+export function dismissProduct(product: Product) {
   return (dispatch: Dispatch) => {
-    return fetch(`products/${productId}`)
-      .then(resp => resp.json())
-      .then(product => {
-        dispatch(addProduct(product))
-      })
+    dispatch(removeProduct(product))
   }
 }

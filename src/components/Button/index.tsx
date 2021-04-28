@@ -13,9 +13,9 @@ export default function Button({
   withMargin = false,
   withIcon = false,
   icon,
-  text
+  text,
+  onClickRes
 }: ButtonProps) {
-  console.log(size)
   return (
     <button className={classNames(
       styles.button,
@@ -28,7 +28,8 @@ export default function Button({
         [styles.btn_secondary]: color === 'secondary',
         [styles.with_margin]: withMargin,
       }
-    )}>
+    )}
+    onClick={onClickRes}>
       <span>
         {text}
       </span>
