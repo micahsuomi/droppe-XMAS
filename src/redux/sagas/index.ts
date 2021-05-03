@@ -1,9 +1,9 @@
-import { all } from 'redux-saga/effects'
+import { all, select, takeLatest } from 'redux-saga/effects'
 
-import productSagas from './product'
-
+function* saveLocalState() {
+  const state = yield select()
+  yield localStorage.setItem('app-state', JSON.stringify(state))
+}
 export default function* rootSaga() {
-  yield all([
-    ...productSagas,
-  ])
+  yield all([takeLatest('*', saveLocalState)])
 }

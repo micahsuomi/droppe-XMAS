@@ -7,11 +7,14 @@ import styles from './styles.module.scss'
 
 
 export default function Button({
+  backgroundColor,
   color,
   size,
   className,
   withMargin = false,
   withIcon = false,
+  outlined,
+  noBackgroundColor,
   icon,
   text,
   onClickRes
@@ -24,8 +27,12 @@ export default function Button({
         [styles.big_button]: size === 'lg',
         [styles.medium_button]: size === 'md',
         [styles.small_button]: size === 'sm',
-        [styles.btn_primary]: color === 'primary',
-        [styles.btn_secondary]: color === 'secondary',
+        [styles.background_primary]: backgroundColor === 'primary',
+        [styles.background_secondary]: backgroundColor === 'secondary',
+        [styles.color_primary]: color === 'primary',
+        [styles.color_secondary]: color === 'secondary',
+        [styles.btn_no_border]: outlined,
+        [styles.btn_no_backgroundcolor]: noBackgroundColor,
         [styles.with_margin]: withMargin,
       }
     )}

@@ -2,8 +2,36 @@
     margin: 1rem;
     border: 1px solid var(--primary);
     padding: 1rem;
-
+    border-radius: 10px;
+    box-shadow: 0 23px 19px #e8d1d166;
     ul {
         list-style: none;
+    }
+    p {
+        font-size: var(--small-font);
+    }
+    &__header {
+        span {
+            font-weight: 700;
+        }
+        i {
+            margin-left: .8rem;
+            color: var(--primary);
+        }
+    }
+    &__user {
+        display: flex;
+        justify-content: space-between;
+        i {
+            color: var(--primary);
+        }
+    }
+    &__user::after {
+        border-bottom: 2px solid grey;
+    }
+    &__expand {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 1rem;
     }
 }

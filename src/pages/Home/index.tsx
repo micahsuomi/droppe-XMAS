@@ -16,7 +16,7 @@ export default function Home() {
           <Button
             size="lg"
             text="View Cart"
-            color="primary"
+            backgroundColor="primary"
             withIcon
             icon={iconsLocale.shoppingCart.iconClass}
             withMargin
