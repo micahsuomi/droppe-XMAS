@@ -32,7 +32,7 @@ export default function Checkout() {
         <>
           <p>Approved Carts</p>
           <div>
-            <CartList cartData={cartData} checkout />
+            <CartList cartData={dataApproved} checkout />
           </div>
         </>
       ) : (

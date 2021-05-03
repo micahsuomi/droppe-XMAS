@@ -46,7 +46,7 @@ export default function cart(
     return {
       ...state,
       carts: [...state.carts],
-      // approvedCarts: [...state.carts],
+      approvedCarts: [...state.carts],
       // disregardedCarts: [...state.disregardedCarts, filterCartDiscard]
     }
     // }

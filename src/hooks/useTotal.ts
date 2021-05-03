@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
+//this one can be eliminated
 export default function UseTotal(totalPrice:any, quantity: number) {
   const [total, setTotal] = useState(0)
   const [discount, setDiscount] = useState('None')
