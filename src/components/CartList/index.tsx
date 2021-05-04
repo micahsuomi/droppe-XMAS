@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 
 import useUsers from '../../hooks/useUsers'
 import CartItem from '../CartItem'
@@ -8,16 +8,6 @@ import './style.scss'
 
 export default function CartList({ cartData, checkout }: CartListProps) {
   const [userData] = useUsers()
-  let totalCarts = useRef(0)
-  
-  const calculateTotalPurchase = (totalCart: any) => {
-    let count = 0
-    for (const cart of cartData) {
-      cart.total = totalCart
-      count += cart.total
-    }
-    totalCarts.current = count
-  }
 
   return (
     <div className="wish-list-wrapper">
@@ -34,7 +24,6 @@ export default function CartList({ cartData, checkout }: CartListProps) {
               date={date}
               products={products}
               checkout={checkout}
-              calculateTotalPurchase={calculateTotalPurchase}
             />
           )
         }

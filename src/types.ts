@@ -62,7 +62,6 @@ export type CartItemProps = {
   date: string
   products: ProductInCart[]
   checkout?: boolean
-  calculateTotalPurchase: Function
 }
 
 // Product types

@@ -19,7 +19,6 @@ export default function CartItem({
   date,
   products,
   checkout,
-  calculateTotalPurchase
 }: CartItemProps) {
   const dispatch = useDispatch()
   const [productData] = useProducts()
@@ -44,12 +43,11 @@ export default function CartItem({
     const dismissedCartProduct = cart.products.find(
       (p) => p.productId === product.id
     )
-    if(dismissedCartProduct) {
+    if (dismissedCartProduct) {
       dispatch(
         removeProductFromCart(cart, approvedCartProducts, dismissedCartProduct)
       )
     }
-  
   }
 
   useEffect(() => {
@@ -57,7 +55,6 @@ export default function CartItem({
       dispatch(deleteCart(cart))
     }
   }, [dispatch, cart, products.length])
-
 
   const calculateTotalProducts = (totalPrice: number, quantity: number) => {
     if (quantity > 1 && quantity <= 3) {
@@ -76,10 +73,9 @@ export default function CartItem({
       discount.current = '-50%'
       return totalPrice - totalPrice * 0.5
     }
-    discount.current = ('None')
+    discount.current = 'None'
     return totalPrice
   }
-  
 
   const calculateTotalCart = (cart: Cart) => {
     let count = 0
@@ -88,7 +84,6 @@ export default function CartItem({
         count += product.total
       }
       totalCart.current = count
-      calculateTotalPurchase(totalCart.current)
     }
   }
 
