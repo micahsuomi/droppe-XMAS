@@ -19,7 +19,7 @@ export default function Checkout() {
       }
     })
   }, [discardedCartData])
-  
+
   return (
     <div className="checkout">
       <h1>Checkout</h1>
@@ -33,15 +33,17 @@ export default function Checkout() {
         <CartList cartData={discardedCartData} checkout />
       </div>
       }
-      <NavLink to ="/wishlist">
-        <Button 
-          size="lg"
-          backgroundColor="secondary"
-          text="Back to Wishlist"
-          withMargin
-          withIcon
-        />
-      </NavLink>
+      <div className="checkout__back-to-wishlist">
+        <NavLink to ="/wishlist">
+          <Button 
+            size="lg"
+            backgroundColor="secondary"
+            text="Back to Wishlist"
+            withMargin
+            withIcon
+          />
+        </NavLink>
+      </div>
     </div>
   )
 }
