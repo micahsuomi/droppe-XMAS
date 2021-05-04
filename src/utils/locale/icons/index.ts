@@ -5,5 +5,5 @@ export const iconsLocale = {
   trash: { iconClass: 'fas fa-trash' },
   arrowDown: { iconClass: 'fas fa-chevron-down' },
   arrowUp: { iconClass: 'fas fa-chevron-up' },
-  arrowRight: { iconClass: 'fas fa-arrow-right'},
+  arrowRight: { iconClass: 'fas fa-arrow-right' },
 }

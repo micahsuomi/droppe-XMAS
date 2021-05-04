@@ -29,7 +29,7 @@ export default function Checkout() {
       </div>
       { showDiscarded && 
       <div className="checkout__discarded">
-        <h4>Discarded Cards</h4>
+        <h4>Discarded Carts</h4>
         <CartList cartData={discardedCartData} checkout />
       </div>
       }
