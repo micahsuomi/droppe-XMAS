@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import moment from 'moment'
 
@@ -19,6 +19,7 @@ export default function CartItem({
   date,
   products,
   checkout,
+  calculateTotalPurchase
 }: CartItemProps) {
   const dispatch = useDispatch()
   const [productData] = useProducts()
@@ -35,7 +36,7 @@ export default function CartItem({
     setViewUser(!viewUser)
   }
 
-  const dismissOnClick = (product: any) => {
+  const discardItemOnClick = (product: any) => {
     const approvedCartProducts = cart.products.filter((p) => {
       return p.productId !== product.id
     })
@@ -43,9 +44,12 @@ export default function CartItem({
     const dismissedCartProduct = cart.products.find(
       (p) => p.productId === product.id
     )
-    dispatch(
-      removeProductFromCart(cart, approvedCartProducts, dismissedCartProduct)
-    )
+    if(dismissedCartProduct) {
+      dispatch(
+        removeProductFromCart(cart, approvedCartProducts, dismissedCartProduct)
+      )
+    }
+  
   }
 
   useEffect(() => {
@@ -55,37 +59,36 @@ export default function CartItem({
   }, [dispatch, cart, products.length])
 
 
-  const calculateTotalProducts = useCallback(
-    (totalPrice: number, quantity: number) => {
-      if (quantity > 1 && quantity <= 3) {
-        discount.current = '-20%'
-        return totalPrice - totalPrice * 0.2
-      }
-      if (quantity === 3 && quantity < 4) {
-        discount.current = '-30%'
-        return totalPrice - totalPrice * 0.3
-      }
-      if (quantity === 4 && quantity < 5) {
-        discount.current = '-40%'
-        return totalPrice - totalPrice * 0.4
-      }
-      if (quantity > 4) {
-        discount.current = '-50%'
-        return totalPrice - totalPrice * 0.5
-      }
-      return totalPrice
-    },
-    []
-  )
+  const calculateTotalProducts = (totalPrice: number, quantity: number) => {
+    if (quantity > 1 && quantity <= 3) {
+      discount.current = '-20%'
+      return totalPrice - totalPrice * 0.2
+    }
+    if (quantity === 3 && quantity < 4) {
+      discount.current = '-30%'
+      return totalPrice - totalPrice * 0.3
+    }
+    if (quantity === 4 && quantity < 5) {
+      discount.current = '-40%'
+      return totalPrice - totalPrice * 0.4
+    }
+    if (quantity > 4) {
+      discount.current = '-50%'
+      return totalPrice - totalPrice * 0.5
+    }
+    discount.current = ('None')
+    return totalPrice
+  }
+  
 
   const calculateTotalCart = (cart: Cart) => {
     let count = 0
     if (cart !== undefined) {
       for (const product of cart.products) {
-        console.log(product.total)
         count += product.total
       }
       totalCart.current = count
+      calculateTotalPurchase(totalCart.current)
     }
   }
 
@@ -145,16 +148,20 @@ export default function CartItem({
         {viewCart ? (
           <Button
             onClickRes={viewCartOnClick}
-            text="Collapse Cart"
+            text="Collapse"
             size="sm"
             backgroundColor="secondary"
+            withIcon
+            icon={iconsLocale.cartCollapse.iconClass}
           />
         ) : (
           <Button
             onClickRes={viewCartOnClick}
-            text="Expand Cart"
+            text="Expand"
             size="sm"
             backgroundColor="primary"
+            withIcon
+            icon={iconsLocale.cartExpand.iconClass}
           />
         )}
       </div>
@@ -192,7 +199,7 @@ export default function CartItem({
                         category={category}
                         description={description}
                         quantity={productItem.quantity}
-                        dismissOnClick={dismissOnClick}
+                        discardItemOnClick={discardItemOnClick}
                         checkout={checkout}
                         totalPrice={productItem.total}
                         totalDiscount={discount.current}
@@ -207,7 +214,7 @@ export default function CartItem({
         </ul>
       )}
 
-      <h3>Total Cart: {totalCart.current} </h3>
+      <h3>Total Cart: €{totalCart.current} </h3>
     </div>
   )
 }

@@ -1,17 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import {useSelector,  useDispatch } from 'react-redux'
 
 import { AppState } from '../types'
-import { getAllCarts } from '../redux/actions/cart'
+import { getAllCarts, getAllCartsDismissed } from '../redux/actions/cart'
 
 export default function useCarts() {
   const dispatch = useDispatch()
   const carts = useSelector((state: AppState) => state.cart.carts)
+  const disregardedCarts = useSelector(
+    (state: AppState) => state.cart.disregardedCarts
+  )
   const [err, setErr] = useState('')
   const [data, setData] = useState(Array)
+  // const [dataDisregarded, setDataDisregarded] = useState(Array)
+
 
   useEffect(() => {
     dispatch(getAllCarts())
+    dispatch(getAllCartsDismissed())
   }, [dispatch])
 
 
@@ -20,7 +26,8 @@ export default function useCarts() {
       setErr('error loading data')
     }
     setData(carts)
-  }, [carts, err])
+    // setDataDisregarded(disregardedCarts)
+  }, [carts, disregardedCarts, err])
 
   return [data]
 }

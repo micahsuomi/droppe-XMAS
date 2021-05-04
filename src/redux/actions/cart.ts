@@ -2,11 +2,11 @@ import { Dispatch } from 'redux'
 
 import {
   GET_CARTS,
+  GET_CARTS_DISMISSED,
   REMOVE_CART_PRODUCT,
   REMOVE_CART,
   Cart,
   CartActions,
-  Product,
   ProductInCart,
 } from '../../types'
 
@@ -19,10 +19,19 @@ export function getCarts(carts: Cart[]): CartActions {
   }
 }
 
+export function getCartsDismissed(carts: Cart[]): CartActions {
+  return {
+    type: GET_CARTS_DISMISSED,
+    payload: {
+      carts,
+    },
+  }
+}
+
 export function removeCartProduct(
   cart: Cart,
   approvedCartProducts: ProductInCart[],
-  dismissedCartProduct: ProductInCart | undefined
+  dismissedCartProduct: ProductInCart
 ): CartActions {
   return {
     type: REMOVE_CART_PRODUCT,
@@ -47,15 +56,26 @@ export function getAllCarts() {
   return async (dispatch: Dispatch) => {
     const url = 'https://fakestoreapi.com/carts?limit=5'
     const res = await fetch(url)
-    const data = await res.json()    
+    const data = await res.json()
     dispatch(getCarts(data))
+  }
+}
+
+export function getAllCartsDismissed() {
+  return async (dispatch: Dispatch) => {
+    const url = 'https://fakestoreapi.com/carts?limit=5'
+    const res = await fetch(url)
+    const data = await res.json()
+    const copiedData = [...data]
+    copiedData.map((cart) => cart.products.splice(0, cart.products.length))
+    dispatch(getCartsDismissed(data))
   }
 }
 
 export function removeProductFromCart(
   cart: Cart,
   approvedCartProducts: ProductInCart[],
-  dismissedCartProduct?: ProductInCart | undefined
+  dismissedCartProduct: any
 ) {
   return async (dispatch: Dispatch) => {
     dispatch(removeCartProduct(cart, approvedCartProducts, 
@@ -70,6 +90,7 @@ export function deleteCart(cart: Cart) {
     const res = await fetch(url)
     const data = await res.json()
     const foundCart = await data.find((c: Cart) => c.id === cart.id)
+    console.log(foundCart)
     dispatch(removeCart(foundCart))
   }
 }

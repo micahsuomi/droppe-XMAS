@@ -12,10 +12,12 @@ import './style.scss'
 
 export default function WishList() {
   const dispatch = useDispatch()
-  const [cartData] = useCarts()
+  const [cartData, diregardedCartsData] = useCarts()
+
   const undoOnClick = () => {
     dispatch(getAllCarts())
   }
+  console.log('from hooks discarded', diregardedCartsData)
   return (
     <div className="wish-list">
       <h1>Wish List</h1>

@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 
 import Image from '../Image'
 import Button from '../Button'
-import useTotal from '../../hooks/useTotal'
 import { ProductItemProps } from '../../types'
+import { iconsLocale } from '../../utils/locale/icons'
 
 import './style.scss'
 
@@ -16,63 +16,69 @@ export default function ProductItem({
   category,
   description,
   quantity,
-  dismissOnClick,
+  discardItemOnClick,
   checkout = false,
   totalPrice,
   totalDiscount  
 }: ProductItemProps) {
-  // const [total, totalDiscount] = useTotal(totalPrice, quantity)
   const [viewMore, setViewMore] = useState(false)
   const viewOnClick = () => {
     setViewMore(!viewMore)
   }
-  console.log(totalDiscount)
   return (
     <div className="product">
-      <Image image={image} title={title} />{' '}
-      <ul>
-        <li>{title} </li>
-        <li>Price: €{price} </li>
-        {viewMore && (
-          <>
-            <li>Category: {category}</li>
-            <li>Description: {description}</li>
-          </>
-        )}
-        {!checkout && (
-          <li>
-            {viewMore ? (
-              <Button
-                onClickRes={viewOnClick}
-                size="sm"
-                text="View Less"
-                color="secondary"
-                noBackgroundColor
-              />
-            ) : (
-              <Button
-                onClickRes={viewOnClick}
-                size="sm"
-                text="View More"
-                color="primary"
-                noBackgroundColor
-              />
-            )}
-          </li>
-        )}
-
-        <li>Qty: {quantity}</li>
-        <li>Total: €{totalPrice}</li>
-        <li>Discount: {totalDiscount}</li>
-        {!checkout && (
-          <Button
-            onClickRes={() => dismissOnClick(product)}
-            size="sm"
-            text="Discard"
-            backgroundColor="secondary"
-          />
-        )}
-      </ul>
+      { totalDiscount !== 'None' && <i className={iconsLocale.discount.iconClass}></i>}
+      <div>
+        <Image image={image} title={title} />{' '}
+      </div>
+      <div className="product__header">
+        <ul>
+          <li><span>{title}</span></li>
+          <li><span>Price:</span> €{price} </li>
+          {viewMore && (
+            <>
+              <li><span>Category:</span> {category}</li>
+              <li><span>Description:</span> {description}</li>
+            </>
+          )}
+          {!checkout && (
+            <li>
+              {viewMore ? (
+                <Button
+                  onClickRes={viewOnClick}
+                  size="sm"
+                  text="View Less"
+                  color="secondary"
+                  noBackgroundColor
+                />
+              ) : (
+                <Button
+                  onClickRes={viewOnClick}
+                  size="sm"
+                  text="View More"
+                  color="primary"
+                  noBackgroundColor
+                />
+              )}
+            </li>
+          )}
+        </ul>
+        <ul className="product__body">
+          <li><span>Qty:</span> {quantity}</li>
+          <li><span>Total:</span> €{totalPrice}</li>
+          <li>{ totalDiscount !== 'None' ? <span style={{color: 'red'}}> {totalDiscount} OFF </span> : '' }</li>
+          {!checkout && (
+            <Button
+              onClickRes={() => discardItemOnClick(product)}
+              size="sm"
+              text="Discard"
+              backgroundColor="secondary"
+              withIcon
+              icon={iconsLocale.trash.iconClass}
+            />
+          )}
+        </ul>
+      </div>
       <hr></hr>
     </div>
   )

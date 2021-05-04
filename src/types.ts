@@ -4,6 +4,7 @@ export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const GET_USERS = 'GET_USERS'
 export const GET_CARTS = 'GET_CARTS'
+export const GET_CARTS_DISMISSED = 'GET_CARTS_DISMISSED'
 export const REMOVE_CART_PRODUCT = 'REMOVE_CART_PRODUCT'
 export const REMOVE_CART = 'REMOVE_CART'
 
@@ -39,7 +40,7 @@ export type ProductItemProps = {
   description: string
   category: string
   quantity: number
-  dismissOnClick: Function
+  discardItemOnClick: Function
   checkout?: boolean
   totalPrice: string | number
   totalDiscount: any
@@ -64,6 +65,7 @@ export type CartItemProps = {
   date: string
   products: ProductInCart[]
   checkout?: boolean
+  calculateTotalPurchase: Function
 }
 
 // Product types
@@ -170,12 +172,19 @@ export type GetCartsAction = {
   }
 }
 
+export type GetCartsDismissedAction = {
+  type: typeof GET_CARTS_DISMISSED
+  payload: {
+    carts: Cart[]
+  }
+}
+
 export type RemoveCartProductAction = {
   type: typeof REMOVE_CART_PRODUCT
   payload: {
     cart: Cart
-    approvedCartProducts?: ProductInCart[]
-    dismissedCartProduct?: ProductInCart
+    approvedCartProducts: ProductInCart[]
+    dismissedCartProduct: ProductInCart
   }
 }
 
@@ -188,6 +197,7 @@ export type RemoveCartAction = {
 
 export type CartActions = 
   | GetCartsAction
+  | GetCartsDismissedAction
   | RemoveCartProductAction
   | RemoveCartAction
 
