@@ -10,18 +10,20 @@ export default function Home() {
   return (
     <div className="home">
       <div className="home__wrapper">
-        <h1>Droppe XMAS</h1>
-        <h2>An intuitive Cart Shopping Experience</h2>
-        <NavLink to="/wishlist" className="home__link">
-          <Button
-            size="lg"
-            text="View Cart"
-            color="primary"
-            withIcon
-            icon={iconsLocale.shoppingCart.iconClass}
-            withMargin
-          />
-        </NavLink>
+        <div className="home__wrapper--container">
+          <h1>Droppe XMAS</h1>
+          <h2>An intuitive Cart Shopping Experience</h2>
+          <NavLink to="/wishlist" className="home__link">
+            <Button
+              size="lg"
+              text="View Cart"
+              backgroundColor="primary"
+              withIcon
+              icon={iconsLocale.shoppingCart.iconClass}
+              withMargin
+            />
+          </NavLink>
+        </div>
       </div>
     </div>
   )

@@ -3,7 +3,6 @@
   cursor: pointer;
   border-radius: 3px;
   border: none;
-  color: white;
   font-size: var(--regular);
   display: flex;
   justify-content: center;
@@ -22,29 +21,57 @@
 
 .big_button {
   width: 18rem;
+  font-size: var(--medium-font);
 }
 .medium_button {
   width: 10rem;
 }
 .small_button {
-  width: 9rem;
+  width: 7rem;
   padding: .3rem;
+  font-size: var(--small-font);
 }
 
+.btn_no_backgroundcolor {
+  background-color: transparent;
+}
+.btn_outlined {
+  border: 1px solid var(--primary);
+}
+
+.btn_no_color {
+  background-color: transparent;
+}
 .with_margin {
   margin: 1rem;
 }
 
-.btn_primary {
+.background_primary {
   background-color: var(--primary);
+  color: white;
 }
-.btn_primary:hover {
+.background_primary:hover {
   background-color: var(--primary-light);
 }
 
-.btn_secondary {
-    background-color: var(--secondary);
-  }
-  .btn_secondary:hover {
-    background-color: var(--secondary-light);
-  }
+.background_secondary {
+  background-color: var(--secondary);
+  color: white;
+}
+.background_secondary:hover {
+  background-color: var(--secondary-light);
+}
+
+.color_primary {
+  color: var(--primary);
+}
+.color_primary:hover {
+  color: var(--primary-light);
+}
+
+.color_secondary {
+  color: var(--secondary);
+}
+.color_secondary:hover {
+  color: var(--secondary-light);
+}

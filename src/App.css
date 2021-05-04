@@ -39,3 +39,15 @@ body {
   
 }
 
+a {
+  text-decoration: none;
+}
+
+hr {
+  border: 1.2px solid rgb(236, 227, 227);
+  margin: .6rem 0 .6rem 0; 
+}
+button::after {
+  outline: none;
+}
+

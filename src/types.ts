@@ -4,7 +4,9 @@ export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const GET_USERS = 'GET_USERS'
 export const GET_CARTS = 'GET_CARTS'
+export const GET_CARTS_DISMISSED = 'GET_CARTS_DISMISSED'
 export const REMOVE_CART_PRODUCT = 'REMOVE_CART_PRODUCT'
+export const REMOVE_CART = 'REMOVE_CART'
 
 
 // UI types
@@ -17,11 +19,14 @@ type Size = 'sm' | 'md' | 'lg'
 
 export type ButtonProps = {
   size: Size
-  color: string
+  backgroundColor?: string
+  color?: string 
   className?: string
   withMargin?: boolean
   withIcon?: boolean
   icon?: string
+  noBackgroundColor?: boolean
+  outlined?: boolean
   text: string
   onClickRes?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
@@ -35,13 +40,21 @@ export type ProductItemProps = {
   description: string
   category: string
   quantity: number
-  dismissOnClick: Function
+  discardItemOnClick: Function
+  checkout?: boolean
+  totalPrice: string | number
+  totalDiscount: any
 }
 
 export type UserProps = {
   firstName: string
   lastName: string
   email: string
+}
+
+export type CartListProps = {
+  cartData: any
+  checkout?: boolean
 }
 
 export type CartItemProps = {
@@ -51,6 +64,8 @@ export type CartItemProps = {
   user?: any 
   date: string
   products: ProductInCart[]
+  checkout?: boolean
+  calculateTotalPurchase: Function
 }
 
 // Product types
@@ -61,12 +76,14 @@ export type Product = {
   description: string
   category: string
   image: string
+  total?: string | number
 }
 
 export type ProductInCart = {
   productId: number
   quantity: number
   product: Product
+  total: number
 }
 
 export type AddProductAction = {
@@ -155,8 +172,24 @@ export type GetCartsAction = {
   }
 }
 
+export type GetCartsDismissedAction = {
+  type: typeof GET_CARTS_DISMISSED
+  payload: {
+    carts: Cart[]
+  }
+}
+
 export type RemoveCartProductAction = {
   type: typeof REMOVE_CART_PRODUCT
+  payload: {
+    cart: Cart
+    approvedCartProducts: ProductInCart[]
+    dismissedCartProduct: ProductInCart
+  }
+}
+
+export type RemoveCartAction = {
+  type: typeof REMOVE_CART
   payload: {
     cart: Cart
   }
@@ -164,7 +197,9 @@ export type RemoveCartProductAction = {
 
 export type CartActions = 
   | GetCartsAction
+  | GetCartsDismissedAction
   | RemoveCartProductAction
+  | RemoveCartAction
 
 export type ProductState = {
   products: Product[]
@@ -172,7 +207,6 @@ export type ProductState = {
 
 export type CartState = {
   carts: any
-  cart: any
   approvedCarts: Cart[]
   disregardedCarts: Cart[]
 }
