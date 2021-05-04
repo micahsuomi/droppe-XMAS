@@ -102,7 +102,7 @@ export default function CartItem({
         </p>
       </div>
       <hr></hr>
-      <div className="cart-item__user">
+      <div className="cart-item__user animate-modal">
         <div>
           <p>
             <span>Cart user: {user && user.username} </span>
@@ -126,14 +126,18 @@ export default function CartItem({
                   onClickRes={viewUserOnClick}
                   text="Hide User"
                   size="sm"
-                  backgroundColor="secondary"
+                  noBackgroundColor
+                  withIcon
+                  icon={iconsLocale.cartCollapse.iconClass}
                 />
               ) : (
                 <Button
                   onClickRes={viewUserOnClick}
                   text="View User"
                   size="sm"
-                  backgroundColor="primary"
+                  noBackgroundColor
+                  withIcon
+                  icon={iconsLocale.cartExpand.iconClass}
                 />
               )}
             </>
@@ -141,10 +145,10 @@ export default function CartItem({
         </div>
       </div>
       <hr></hr>
-      <p>
-        <span>Products:</span> {products.length}
-      </p>
       <div className="cart-item__expand">
+        <p>
+          <span>Products:</span> {products.length}
+        </p>
         {viewCart ? (
           <Button
             onClickRes={viewCartOnClick}
@@ -166,7 +170,7 @@ export default function CartItem({
         )}
       </div>
       {viewCart && (
-        <ul>
+        <ul className="animate-modal">
           {' '}
           {products.map((productItem: any) => (
             <>

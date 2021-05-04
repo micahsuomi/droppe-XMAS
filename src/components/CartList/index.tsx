@@ -21,7 +21,7 @@ export default function CartList({
     }
     totalCarts.current = count
   }
-  
+
   return (  
     <div className="wish-list-wrapper">
       {cartData.map((cart: any) => {

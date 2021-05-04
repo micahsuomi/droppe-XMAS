@@ -19,7 +19,7 @@ export default function WishList() {
   }
   return (
     <div className="wish-list">
-      <h1>Wish List</h1>
+      <h2>Your Wish List</h2>
       <Button
         backgroundColor="secondary"
         size="sm"
@@ -33,9 +33,9 @@ export default function WishList() {
       <div className="wish-list__checkout">
         <NavLink to="/checkout">
           <Button
-            backgroundColor="secondary"
+            backgroundColor="primary"
             size="lg"
-            text="Proceed to checkout"
+            text="Proceed to Checkout"
             withMargin
           />
         </NavLink>
