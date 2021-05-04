@@ -12,12 +12,11 @@ import './style.scss'
 
 export default function WishList() {
   const dispatch = useDispatch()
-  const [cartData, diregardedCartsData] = useCarts()
+  const [cartData] = useCarts()
 
   const undoOnClick = () => {
     dispatch(getAllCarts())
   }
-  console.log('from hooks discarded', diregardedCartsData)
   return (
     <div className="wish-list">
       <h1>Wish List</h1>
@@ -31,13 +30,16 @@ export default function WishList() {
         onClickRes={undoOnClick}
       />
       <CartList cartData={cartData} />
-      <NavLink to="/checkout">
-        <Button
-          backgroundColor="secondary"
-          size="lg"
-          text="Proceed to checkout"
-        />
-      </NavLink>
+      <div className="wish-list__checkout">
+        <NavLink to="/checkout">
+          <Button
+            backgroundColor="secondary"
+            size="lg"
+            text="Proceed to checkout"
+            withMargin
+          />
+        </NavLink>
+      </div>
     </div>
   )
 }

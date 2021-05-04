@@ -52,25 +52,28 @@ export function removeCart(cart: Cart): CartActions {
   }
 }
 
-export function getAllCarts() {
-  return async (dispatch: Dispatch) => {
-    const url = 'https://fakestoreapi.com/carts?limit=5'
-    const res = await fetch(url)
-    const data = await res.json()
-    dispatch(getCarts(data))
-  }
-}
+const url = 'https://fakestoreapi.com/carts?limit=5'
 
 export function getAllCartsDismissed() {
   return async (dispatch: Dispatch) => {
-    const url = 'https://fakestoreapi.com/carts?limit=5'
     const res = await fetch(url)
     const data = await res.json()
     const copiedData = [...data]
     copiedData.map((cart) => cart.products.splice(0, cart.products.length))
     dispatch(getCartsDismissed(data))
   }
+    
 }
+
+export function getAllCarts() {
+  return async (dispatch: Dispatch) => {
+    const res = await fetch(url)
+    const data = await res.json()
+    dispatch(getCarts(data))
+  }
+}
+
+
 
 export function removeProductFromCart(
   cart: Cart,
@@ -86,7 +89,6 @@ export function removeProductFromCart(
 
 export function deleteCart(cart: Cart) {
   return async (dispatch: Dispatch) => {
-    const url = 'https://fakestoreapi.com/carts?limit=5'
     const res = await fetch(url)
     const data = await res.json()
     const foundCart = await data.find((c: Cart) => c.id === cart.id)

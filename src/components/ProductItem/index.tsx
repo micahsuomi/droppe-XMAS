@@ -19,7 +19,7 @@ export default function ProductItem({
   discardItemOnClick,
   checkout = false,
   totalPrice,
-  totalDiscount  
+  totalDiscount,
 }: ProductItemProps) {
   const [viewMore, setViewMore] = useState(false)
   const viewOnClick = () => {
@@ -27,18 +27,33 @@ export default function ProductItem({
   }
   return (
     <div className="product">
-      { totalDiscount !== 'None' && <i className={iconsLocale.discount.iconClass}></i>}
+      {totalDiscount !== 'None' && (
+        <i className={iconsLocale.discount.iconClass} style={{position: 'absolute',
+          top: '6%',
+          left: '1%',
+          color: '#ea2828',
+          fontSize: '4em',
+          opacity: '.5'}}></i>
+      )}
       <div>
         <Image image={image} title={title} />{' '}
       </div>
       <div className="product__header">
         <ul>
-          <li><span>{title}</span></li>
-          <li><span>Price:</span> €{price} </li>
+          <li>
+            <span>{title}</span>
+          </li>
+          <li>
+            <span>Price:</span> €{price}{' '}
+          </li>
           {viewMore && (
             <>
-              <li><span>Category:</span> {category}</li>
-              <li><span>Description:</span> {description}</li>
+              <li>
+                <span>Category:</span> {category}
+              </li>
+              <li>
+                <span>Description:</span> {description}
+              </li>
             </>
           )}
           {!checkout && (
@@ -64,17 +79,26 @@ export default function ProductItem({
           )}
         </ul>
         <ul className="product__body">
-          <li><span>Qty:</span> {quantity}</li>
-          <li><span>Total:</span> €{totalPrice}</li>
-          <li>{ totalDiscount !== 'None' ? <span style={{color: 'red'}}> {totalDiscount} OFF </span> : '' }</li>
+          <li>
+            <span>Qty:</span> {quantity}
+          </li>
+          <li>
+            <span>Total:</span> €{totalPrice}
+          </li>
+          <li>
+            {totalDiscount !== 'None' ? (
+              <span style={{ color: 'red' }}> {totalDiscount} OFF </span>
+            ) : (
+              ''
+            )}
+          </li>
           {!checkout && (
             <Button
               onClickRes={() => discardItemOnClick(product)}
               size="sm"
               text="Discard"
-              backgroundColor="secondary"
-              withIcon
-              icon={iconsLocale.trash.iconClass}
+              noBackgroundColor
+              color="secondary"
             />
           )}
         </ul>
@@ -82,4 +106,13 @@ export default function ProductItem({
       <hr></hr>
     </div>
   )
+}
+
+export const discountStyle = {
+  position: 'absolute',
+  top: '6%',
+  left: '1%',
+  color: '#ea2828',
+  fontSize: '4em',
+  opacity: '.5'
 }

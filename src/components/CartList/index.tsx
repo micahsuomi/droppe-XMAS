@@ -12,7 +12,7 @@ export default function CartList({
 }: CartListProps) {
   const [userData] = useUsers()
   let totalCarts = useRef(0)
-  // const [totalLoaded, setTotalLoaded] = useState(false)
+
   const calculateTotalPurchase = (totalCart: any) => {
     let count = 0
     for(const cart of cartData) {
@@ -20,8 +20,8 @@ export default function CartList({
       count += cart.total
     }
     totalCarts.current = count
-    // setTotalLoaded(true)
   }
+  
   return (  
     <div className="wish-list-wrapper">
       {cartData.map((cart: any) => {

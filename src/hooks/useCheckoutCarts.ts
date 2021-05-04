@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { AppState } from '../types'
+import { AppState, Cart } from '../types'
 
 export default function useCheckoutCarts() {
-  const [data, setData] = useState(Array)
-  const [dataApproved, setDataApproved] = useState(Array)
+  const [cartsDiscarded, setCartsDiscarded] = useState([] as Cart[])
+  const [cartsApproved, setCartsApproved] = useState(Array)
 
   const disregardedCarts = useSelector(
     (state: AppState) => state.cart.disregardedCarts
@@ -16,9 +16,9 @@ export default function useCheckoutCarts() {
   )
 
   useEffect(() => {
-    setData(disregardedCarts)
-    setDataApproved(approvedCarts)
+    setCartsDiscarded(disregardedCarts)
+    setCartsApproved(approvedCarts)
   }, [disregardedCarts, approvedCarts])
 
-  return [data, dataApproved]
+  return [cartsDiscarded, cartsApproved]
 }

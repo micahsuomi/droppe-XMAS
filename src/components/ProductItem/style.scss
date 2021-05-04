@@ -4,12 +4,7 @@
     grid-template-columns: 20% 80%;
     position: relative;
     i {
-      position: absolute;
-      top: 6%;
-      left: 1%;
-      color: #ea2828;
-      font-size: 4em;
-      opacity: .5;
+      
     }
   &__body {
     display: flex;
@@ -17,7 +12,7 @@
     align-items: center;
   }
   &__header span,
-  &__body span {
+  &__body, span {
     color: rgb(56, 53, 53);
     font-weight: 600;
   }

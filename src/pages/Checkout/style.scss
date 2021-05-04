@@ -1,0 +1,16 @@
+.checkout {
+    padding: 2rem 8rem;
+    background-color: #F1F1F1;
+    &__approved {
+        h4 {
+            color: var(--primary);
+            margin-left: 2rem;
+        }
+    }
+    &__discarded {
+        h4 {
+            color: var(--secondary);
+            margin-left: 2rem;
+        } 
+    }
+}
