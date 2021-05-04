@@ -37,6 +37,8 @@ export default function WishList() {
             size="lg"
             text="Proceed to Checkout"
             withMargin
+            withIcon
+            icon={iconsLocale.arrowRight.iconClass}
           />
         </NavLink>
       </div>

@@ -10,7 +10,6 @@ export default function useCheckoutCarts() {
   const disregardedCarts = useSelector(
     (state: AppState) => state.cart.disregardedCarts
   )
-  console.log(disregardedCarts)
   const approvedCarts = useSelector(
     (state: AppState) => state.cart.approvedCarts
   )

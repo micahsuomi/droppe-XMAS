@@ -8,10 +8,10 @@ export default function User({
   email
 }: UserProps) {
   return (
-    <div>
+    <React.Fragment>
       <p>First Name: {firstName}</p>
       <p>Last Name: {lastName}</p>
       <p>Email: {email}</p>
-    </div>
+    </React.Fragment>
   )
 }

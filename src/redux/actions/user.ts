@@ -16,7 +16,6 @@ export function getUsers(users: User[]): UserActions {
   }
 }
 
-// Async action processed by redux-thunk middleware
 export function getAllUsers() {
   return async (dispatch: Dispatch) => {
     const url = 'https://fakestoreapi.com/users'

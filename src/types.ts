@@ -1,6 +1,4 @@
-// Action types
 export const GET_PRODUCTS = 'GET_PRODUCTS'
-export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const GET_USERS = 'GET_USERS'
 export const GET_CARTS = 'GET_CARTS'
@@ -8,19 +6,18 @@ export const GET_CARTS_DISMISSED = 'GET_CARTS_DISMISSED'
 export const REMOVE_CART_PRODUCT = 'REMOVE_CART_PRODUCT'
 export const REMOVE_CART = 'REMOVE_CART'
 
-
 // UI types
 export type ImageProps = {
   image: string
   title: string
 }
 
-type Size = 'sm' | 'md' | 'lg' 
+type Size = 'sm' | 'md' | 'lg'
 
 export type ButtonProps = {
   size: Size
   backgroundColor?: string
-  color?: string 
+  color?: string
   className?: string
   withMargin?: boolean
   withIcon?: boolean
@@ -61,7 +58,7 @@ export type CartItemProps = {
   id: number
   cart: Cart
   userId: number
-  user?: any 
+  user?: any
   date: string
   products: ProductInCart[]
   checkout?: boolean
@@ -86,20 +83,7 @@ export type ProductInCart = {
   total: number
 }
 
-export type AddProductAction = {
-  type: typeof ADD_PRODUCT
-  payload: {
-    product: Product,
-  }
-}
-
-export type RemoveProductAction = {
-  type: typeof REMOVE_PRODUCT
-  payload: {
-    product: Product,
-  }
-}
-
+//Product actions types
 export type GetProductsAction = {
   type: typeof GET_PRODUCTS
   payload: {
@@ -107,9 +91,18 @@ export type GetProductsAction = {
   }
 }
 
-// User type
+export type RemoveProductAction = {
+  type: typeof REMOVE_PRODUCT
+  payload: {
+    product: Product
+  }
+}
+
+export type ProductActions = GetProductsAction | RemoveProductAction
+
+// User types
 export type Geolocation = {
-  lat: string,
+  lat: string
   ling: string
 }
 
@@ -136,6 +129,7 @@ export type User = {
   phone: string
 }
 
+// User actions types
 export type GetUsersAction = {
   type: typeof GET_USERS
   payload: {
@@ -143,20 +137,9 @@ export type GetUsersAction = {
   }
 }
 
-export type UserActions = 
-  | GetUsersAction
+export type UserActions = GetUsersAction
 
-export type UserState = {
-    users: User[]
-}
-// Use this union in reducer
-export type ProductActions =
-  | GetProductsAction
-  | AddProductAction
-  | RemoveProductAction
-
-
-// Cart type
+// Cart types
 export type Cart = {
   id: number
   userId: number
@@ -165,6 +148,7 @@ export type Cart = {
   cartUser?: User
 }
 
+// Cart action types
 export type GetCartsAction = {
   type: typeof GET_CARTS
   payload: {
@@ -195,18 +179,24 @@ export type RemoveCartAction = {
   }
 }
 
-export type CartActions = 
+export type CartActions =
   | GetCartsAction
   | GetCartsDismissedAction
   | RemoveCartProductAction
   | RemoveCartAction
+
+// State types
+
+export type UserState = {
+  users: User[]
+}
 
 export type ProductState = {
   products: Product[]
 }
 
 export type CartState = {
-  carts: any
+  carts: Cart[]
   approvedCarts: Cart[]
   disregardedCarts: Cart[]
 }

@@ -62,7 +62,6 @@ export function getAllCartsDismissed() {
     copiedData.map((cart) => cart.products.splice(0, cart.products.length))
     dispatch(getCartsDismissed(data))
   }
-    
 }
 
 export function getAllCarts() {
@@ -73,17 +72,15 @@ export function getAllCarts() {
   }
 }
 
-
-
 export function removeProductFromCart(
   cart: Cart,
   approvedCartProducts: ProductInCart[],
-  dismissedCartProduct: any
+  dismissedCartProduct: ProductInCart
 ) {
   return async (dispatch: Dispatch) => {
-    dispatch(removeCartProduct(cart, approvedCartProducts, 
-      dismissedCartProduct
-    ))
+    dispatch(
+      removeCartProduct(cart, approvedCartProducts, dismissedCartProduct)
+    )
   }
 }
 
@@ -92,7 +89,6 @@ export function deleteCart(cart: Cart) {
     const res = await fetch(url)
     const data = await res.json()
     const foundCart = await data.find((c: Cart) => c.id === cart.id)
-    console.log(foundCart)
     dispatch(removeCart(foundCart))
   }
 }
