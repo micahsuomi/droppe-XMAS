@@ -1,7 +1,6 @@
 import { Dispatch } from 'redux'
 
 import {
-  ADD_PRODUCT,
   REMOVE_PRODUCT,
   ProductActions,
   Product,
@@ -13,15 +12,6 @@ export function getProducts(products: Product[]): ProductActions {
     type: GET_PRODUCTS,
     payload: {
       products,
-    },
-  }
-}
-
-export function addProduct(product: Product): ProductActions {
-  return {
-    type: ADD_PRODUCT,
-    payload: {
-      product,
     },
   }
 }

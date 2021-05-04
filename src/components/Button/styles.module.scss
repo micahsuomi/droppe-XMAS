@@ -9,14 +9,14 @@
   align-items: center;
 
   i {
-      font-size: 1.4em;
-      margin-left: .4rem;
+    font-size: 1.4em;
+    margin-left: 0.4rem;
   }
 }
 
 .button:hover {
-    transform: scale(1.03);
-    transition: .1s ease-in-out;
+  transform: scale(1.03);
+  transition: 0.1s ease-in-out;
 }
 
 .big_button {
@@ -28,7 +28,7 @@
 }
 .small_button {
   width: 7rem;
-  padding: .3rem;
+  padding: 0.3rem;
   font-size: var(--small-font);
 }
 

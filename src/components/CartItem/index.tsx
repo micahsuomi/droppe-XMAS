@@ -128,7 +128,7 @@ export default function CartItem({
                   size="sm"
                   noBackgroundColor
                   withIcon
-                  icon={iconsLocale.cartCollapse.iconClass}
+                  icon={iconsLocale.arrowUp.iconClass}
                 />
               ) : (
                 <Button
@@ -137,7 +137,7 @@ export default function CartItem({
                   size="sm"
                   noBackgroundColor
                   withIcon
-                  icon={iconsLocale.cartExpand.iconClass}
+                  icon={iconsLocale.arrowDown.iconClass}
                 />
               )}
             </>
@@ -156,7 +156,7 @@ export default function CartItem({
             size="sm"
             backgroundColor="secondary"
             withIcon
-            icon={iconsLocale.cartCollapse.iconClass}
+            icon={iconsLocale.arrowUp.iconClass}
           />
         ) : (
           <Button
@@ -165,7 +165,7 @@ export default function CartItem({
             size="sm"
             backgroundColor="primary"
             withIcon
-            icon={iconsLocale.cartExpand.iconClass}
+            icon={iconsLocale.arrowDown.iconClass}
           />
         )}
       </div>

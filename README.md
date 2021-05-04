@@ -10,7 +10,7 @@
 
 ## General Info
 
-Droppe X-mast is a fully functional shopping cart where users can view, approve or delete certain items from their product, and have an overview on discounts, total expenditure on carts, approved carts and deleted products and carts. App is deployed on Netlify at https://serene-mccarthy-03cdaf.netlify.app/
+Droppe XMAS is a fully functional shopping cart where users can view, approve or delete certain items from their product, and have an overview on discounts, total expenditure on carts, approved carts and deleted products and carts. App is deployed on Netlify at https://droppe-xmas.netlify.app/
 
 ## Tech Stack
 
@@ -19,7 +19,6 @@ Droppe X-mast is a fully functional shopping cart where users can view, approve 
 - Redux
 - Redux-Saga
 - Sass
-- Local Storage
 
 ## Home
 

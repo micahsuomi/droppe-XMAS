@@ -43,7 +43,7 @@ export default function cart(
     const foundCartDiscard = state.disregardedCarts.find(
       (c: any) => c.id === cart.id
     )
-    foundCartApprove.products = approvedCartProducts
+    if(foundCartApprove) { foundCartApprove.products = approvedCartProducts }
     state.carts.slice(foundIndex, 1).push(cart)
       foundCartDiscard?.products.push(dismissedCartProduct)
       return {

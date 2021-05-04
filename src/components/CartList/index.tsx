@@ -6,34 +6,31 @@ import { CartListProps } from '../../types'
 
 import './style.scss'
 
-export default function CartList({
-  cartData,
-  checkout
-}: CartListProps) {
+export default function CartList({ cartData, checkout }: CartListProps) {
   const [userData] = useUsers()
   let totalCarts = useRef(0)
-
+  
   const calculateTotalPurchase = (totalCart: any) => {
     let count = 0
-    for(const cart of cartData) {
+    for (const cart of cartData) {
       cart.total = totalCart
       count += cart.total
     }
     totalCarts.current = count
   }
 
-  return (  
+  return (
     <div className="wish-list-wrapper">
       {cartData.map((cart: any) => {
         const { id, userId, date, products } = cart
-        if(cart.products.length > 0) {
+        if (cart.products.length > 0) {
           return (
             <CartItem
               key={id}
               id={id}
               cart={cart}
               userId={userId}
-              user={userData.find((user: any) => (user.id === userId))}
+              user={userData.find((user: any) => user.id === userId)}
               date={date}
               products={products}
               checkout={checkout}
@@ -43,9 +40,6 @@ export default function CartList({
         }
         return null
       })}
-      {/* {totalLoaded ?       
-        <h3>Total Purchase: {totalCarts.current}</h3> : 'Loading Total'
-      } */}
     </div>
   )
 }
