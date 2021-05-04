@@ -4,13 +4,15 @@
     &__approved {
         h4 {
             color: var(--primary);
-            margin-left: 2rem;
+            margin-left: .5rem;
+            margin-top: 2rem;
         }
     }
     &__discarded {
         h4 {
             color: var(--secondary);
-            margin-left: 2rem;
+            margin-left: .5rem;
+            margin-top: 2rem;
         } 
     }
 }
