@@ -1,11 +1,14 @@
 .wish-list {
     padding: 2rem 8rem;
     background-color: #F1F1F1;
-    h2 {
-        color: var(--primary);
-        text-align: center;
-        font-size: var(--large-font);
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    h1 {
         text-align: left;
+        color: var(--color-text);
     }
     &__checkout {
         display: flex;

@@ -26,10 +26,10 @@ body {
   --primary: #62BFAD;
   --primary-dark: #459181;
   --primary-light: #85e4d1;
-
   --secondary: #FFB1B1;
   --secondary-dark: #e08383;
   --secondary-light: #f5c7c7;
+  --color-text:#2c2222;
 
   /* fonts */
   --small-font: 14px;
