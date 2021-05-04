@@ -19,16 +19,17 @@ export default function WishList() {
   }
   return (
     <div className="wish-list">
-      <h2>Your Wish List</h2>
-      <Button
-        backgroundColor="secondary"
-        size="sm"
-        text="Undo"
-        withIcon
-        withMargin
-        icon={iconsLocale.undoAll.iconClass}
-        onClickRes={undoOnClick}
-      />
+      <div className="wish-list__header">
+        <h1>Your Wish List</h1>
+        <Button
+          backgroundColor="secondary"
+          size="sm"
+          text="Undo"
+          withIcon
+          icon={iconsLocale.undoAll.iconClass}
+          onClickRes={undoOnClick}
+        />
+      </div>
       <CartList cartData={cartData} />
       <div className="wish-list__checkout">
         <NavLink to="/checkout">

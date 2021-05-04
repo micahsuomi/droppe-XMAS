@@ -1,6 +1,9 @@
 .checkout {
     padding: 2rem 8rem;
     background-color: #F1F1F1;
+    h1 {
+        color: var(--color-text);
+    }
     &__approved {
         h4 {
             color: var(--primary);
