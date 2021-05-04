@@ -33,6 +33,7 @@ export default function Button({
         [styles.with_margin]: withMargin,
       })}
       onClick={onClickRes}
+      title={text}
     >
       <span>{text}</span>
       {withIcon && <i className={icon}></i>}

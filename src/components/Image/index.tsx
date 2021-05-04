@@ -7,7 +7,7 @@ import './style.scss'
 export default function Image({ image, title }: ImageProps) {
   return (
     <div className="image">
-      <img src={image} alt={title} />
+      <img src={image} alt={title} title={title} />
     </div>
   )
 }

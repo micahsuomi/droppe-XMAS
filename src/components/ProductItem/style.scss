@@ -1,15 +1,16 @@
 .product {
   margin-top: 2rem;
-  display: grid;
+  &__wrapper {
+    display: grid;
     grid-template-columns: 20% 80%;
     position: relative;
-    i {
-      
-    }
+    padding: .5rem;
+  }
   &__body {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 20% 36% 25% 19%;
     align-items: center;
+    flex-wrap: wrap;
   }
   &__header span,
   &__body, span {
@@ -17,6 +18,14 @@
     font-weight: 600;
   }
   hr {
-    width: 43rem;
+    width: auto;
+  }
+}
+@media screen and (max-width: 500px) {
+  .product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 }
